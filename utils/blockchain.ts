@@ -1,5 +1,12 @@
 import { ethers } from 'ethers';
 
+// MetaMask 타입 선언
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 // Holesky Testnet Configuration (실제 OVM이 배포된 네트워크)
 export const HOLESKY_CONFIG = {
   chainId: 17000,
@@ -49,7 +56,7 @@ export const OVM_ABI = [
 
 // Provider 생성
 export const getProvider = () => {
-  return new ethers.JsonRpcProvider(HOODI_CONFIG.rpcUrl);
+  return new ethers.JsonRpcProvider(HOLESKY_CONFIG.rpcUrl);
 };
 
 // Wallet 연결
@@ -64,7 +71,7 @@ export const connectWallet = async () => {
   try {
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
-      params: [{ chainId: `0x${HOODI_CONFIG.chainId.toString(16)}` }],
+      params: [{ chainId: `0x${HOLESKY_CONFIG.chainId.toString(16)}` }],
     });
   } catch (switchError: any) {
     // 네트워크가 추가되지 않은 경우
@@ -72,11 +79,11 @@ export const connectWallet = async () => {
       await window.ethereum.request({
         method: 'wallet_addEthereumChain',
         params: [{
-          chainId: `0x${HOODI_CONFIG.chainId.toString(16)}`,
-          chainName: HOODI_CONFIG.name,
-          rpcUrls: [HOODI_CONFIG.rpcUrl],
-          blockExplorerUrls: [HOODI_CONFIG.explorerUrl],
-          nativeCurrency: HOODI_CONFIG.nativeCurrency
+          chainId: `0x${HOLESKY_CONFIG.chainId.toString(16)}`,
+          chainName: HOLESKY_CONFIG.name,
+          rpcUrls: [HOLESKY_CONFIG.rpcUrl],
+          blockExplorerUrls: [HOLESKY_CONFIG.explorerUrl],
+          nativeCurrency: HOLESKY_CONFIG.nativeCurrency
         }],
       });
     } else {
@@ -153,6 +160,9 @@ export const createTeamValidator = async (
   
   if (teamCreatedEvent) {
     const parsedLog = contract.interface.parseLog(teamCreatedEvent);
+    if (!parsedLog) {
+      throw new Error('Failed to parse TeamCreated event');
+    }
     return {
       teamId: parsedLog.args.teamId.toString(),
       ovmAddress: parsedLog.args.ovmAddress,

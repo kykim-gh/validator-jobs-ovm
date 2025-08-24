@@ -1,16 +1,18 @@
 module.exports = {
   apps: [{
-    name: 'obol-validator-jobs',
+    name: 'obol-demo',
     script: 'npm',
-    args: 'run dev',
+    args: 'start',
     cwd: '/root/validator-jobs-ovm',
     instances: 1,
     autorestart: true,
     watch: false,
-    max_memory_restart: '1G',
+    max_memory_restart: '2G',
+    max_restarts: 5,
+    min_uptime: '10s',
     env: {
-      NODE_ENV: 'development',
-      PORT: 3000
+      NODE_ENV: 'production',
+      PORT: 3002
     },
     log_file: '/var/log/pm2/obol-validator-jobs.log',
     out_file: '/var/log/pm2/obol-validator-jobs-out.log',

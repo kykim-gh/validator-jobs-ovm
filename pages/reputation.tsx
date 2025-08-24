@@ -13,7 +13,7 @@ const ReputationPage = () => {
 
   const calculateReputation = async () => {
     if (!githubUsername || !walletAddress) {
-      setError('GitHub 사용자명과 지갑 주소를 모두 입력해주세요.');
+      setError('Please enter both GitHub username and wallet address.');
       return;
     }
 
@@ -38,10 +38,10 @@ const ReputationPage = () => {
       if (data.success) {
         setResult(data.data);
       } else {
-        setError(data.error || '평판 계산 중 오류가 발생했습니다.');
+        setError(data.error || 'An error occurred while calculating reputation.');
       }
     } catch (err) {
-      setError('서버 연결 중 오류가 발생했습니다.');
+      setError('An error occurred while connecting to the server.');
     } finally {
       setLoading(false);
     }
@@ -52,8 +52,8 @@ const ReputationPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Head>
-        <title>평판 확인 - ValidatorJobs with OVM</title>
-        <meta name="description" content="DVT 오퍼레이터 평판 점수를 확인하세요" />
+        <title>Check Reputation - ValidatorJobs with OVM</title>
+        <meta name="description" content="Check your DVT operator reputation score" />
       </Head>
 
       {/* Navigation */}
@@ -68,13 +68,13 @@ const ReputationPage = () => {
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
-                홈
+                Home
               </Link>
               <Link href="/teams" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
-                팀 관리
+                Team Management
               </Link>
               <Link href="/dashboard" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
-                대시보드
+                Dashboard
               </Link>
             </div>
           </div>
@@ -85,10 +85,10 @@ const ReputationPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-extrabold text-white mb-4">
-            DVT 오퍼레이터 평판 확인
+            DVT Operator Reputation Check
           </h1>
           <p className="text-xl text-gray-300">
-            GitHub 활동과 POAP 이벤트 참여를 기반으로 평판 점수를 계산합니다
+            Calculate reputation score based on GitHub activity and POAP event participation
           </p>
         </div>
 
@@ -97,7 +97,7 @@ const ReputationPage = () => {
           <div className="space-y-6">
             <div>
               <label htmlFor="github" className="block text-sm font-medium text-gray-700 mb-2">
-                GitHub 사용자명
+                GitHub Username
               </label>
               <input
                 type="text"
@@ -111,7 +111,7 @@ const ReputationPage = () => {
 
             <div>
               <label htmlFor="wallet" className="block text-sm font-medium text-gray-700 mb-2">
-                이더리움 지갑 주소
+                Ethereum Wallet Address
               </label>
               <input
                 type="text"
@@ -134,7 +134,7 @@ const ReputationPage = () => {
               disabled={loading}
               className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 text-white font-medium py-3 px-6 rounded-lg transition-colors"
             >
-              {loading ? '계산 중...' : '평판 점수 계산'}
+              {loading ? 'Calculating...' : 'Calculate Reputation Score'}
             </button>
           </div>
         </div>
@@ -148,7 +148,7 @@ const ReputationPage = () => {
                 {grade?.grade}
               </div>
               <h2 className="text-3xl font-bold text-gray-900 mb-2">
-                {result.total}/1000 점
+                {result.total}/1000 points
               </h2>
               <p className="text-lg text-gray-600 mb-4">{grade?.description}</p>
               <div className="w-full bg-gray-200 rounded-full h-4">
@@ -165,27 +165,27 @@ const ReputationPage = () => {
               <div className="glass-card rounded-xl p-6">
                 <div className="flex items-center mb-4">
                   <CodeBracketIcon className="w-8 h-8 text-gray-600 mr-3" />
-                  <h3 className="text-xl font-semibold text-gray-900">GitHub 활동</h3>
+                  <h3 className="text-xl font-semibold text-gray-900">GitHub Activity</h3>
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-4">
-                  {result.github}/700 점
+                  {result.github}/700 points
                 </div>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span>저장소</span>
-                    <span className="font-medium">{result.breakdown.repos}점</span>
+                    <span>Repositories</span>
+                    <span className="font-medium">{result.breakdown.repos}pts</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>팔로워</span>
-                    <span className="font-medium">{result.breakdown.followers}점</span>
+                    <span>Followers</span>
+                    <span className="font-medium">{result.breakdown.followers}pts</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>경력</span>
-                    <span className="font-medium">{result.breakdown.experience}점</span>
+                    <span>Experience</span>
+                    <span className="font-medium">{result.breakdown.experience}pts</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>DVT 관련 보너스</span>
-                    <span className="font-medium">{result.breakdown.dvtBonus}점</span>
+                    <span>DVT Related Bonus</span>
+                    <span className="font-medium">{result.breakdown.dvtBonus}pts</span>
                   </div>
                 </div>
               </div>
@@ -194,19 +194,19 @@ const ReputationPage = () => {
               <div className="glass-card rounded-xl p-6">
                 <div className="flex items-center mb-4">
                   <CalendarIcon className="w-8 h-8 text-gray-600 mr-3" />
-                  <h3 className="text-xl font-semibold text-gray-900">POAP 이벤트</h3>
+                  <h3 className="text-xl font-semibold text-gray-900">POAP Events</h3>
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-4">
-                  {result.poap}/300 점
+                  {result.poap}/300 points
                 </div>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span>이더리움 이벤트</span>
-                    <span className="font-medium">{result.breakdown.ethereumEvents}점</span>
+                    <span>Ethereum Events</span>
+                    <span className="font-medium">{result.breakdown.ethereumEvents}pts</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>해커톤 참여</span>
-                    <span className="font-medium">{result.breakdown.hackathons}점</span>
+                    <span>Hackathon Participation</span>
+                    <span className="font-medium">{result.breakdown.hackathons}pts</span>
                   </div>
                 </div>
               </div>
@@ -214,28 +214,28 @@ const ReputationPage = () => {
 
             {/* Next Steps */}
             <div className="glass-card rounded-xl p-6">
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">다음 단계</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-4">Next Steps</h3>
               <div className="space-y-3">
                 {result.total >= 600 ? (
                   <>
                     <div className="flex items-center text-green-700">
                       <StarIcon className="w-5 h-5 mr-2" />
-                      <span>팀 리더 자격 충족! 팀을 만들거나 기존 팀에 참여할 수 있습니다.</span>
+                      <span>Team leader qualification met! You can create a team or join an existing team.</span>
                     </div>
                     <Link href="/teams" className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors">
-                      팀 관리하기
+                      Manage Teams
                     </Link>
                   </>
                 ) : (
                   <>
                     <div className="flex items-center text-amber-700">
                       <ChartBarIcon className="w-5 h-5 mr-2" />
-                      <span>평판을 더 높여서 더 좋은 팀에 참여해보세요!</span>
+                      <span>Increase your reputation to join better teams!</span>
                     </div>
                     <div className="text-sm text-gray-600">
-                      <p>• GitHub에서 더 많은 DVT/이더리움 관련 프로젝트에 기여하세요</p>
-                      <p>• EthGlobal 해커톤이나 DevConnect 같은 이벤트에 참여하세요</p>
-                      <p>• 오픈소스 검증자 도구 개발에 참여하세요</p>
+                      <p>• Contribute to more DVT/Ethereum related projects on GitHub</p>
+                      <p>• Participate in events like EthGlobal hackathons or DevConnect</p>
+                      <p>• Participate in open source validator tool development</p>
                     </div>
                   </>
                 )}

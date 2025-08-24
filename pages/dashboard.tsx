@@ -169,8 +169,8 @@ const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Head>
-        <title>대시보드 - ValidatorJobs with OVM</title>
-        <meta name="description" content="DVT 생태계 현황과 통계를 확인하세요" />
+        <title>Dashboard - ValidatorJobs with OVM</title>
+        <meta name="description" content="Check DVT ecosystem status and statistics" />
       </Head>
 
       {/* Navigation */}
@@ -185,13 +185,13 @@ const DashboardPage = () => {
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
-                홈
+                Home
               </Link>
               <Link href="/reputation" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
-                평판 확인
+                Check Reputation
               </Link>
               <Link href="/teams" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
-                팀 관리
+                Team Management
               </Link>
             </div>
           </div>
@@ -202,7 +202,7 @@ const DashboardPage = () => {
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-extrabold text-white mb-2">
-            DVT 생태계 대시보드
+            DVT Ecosystem Dashboard
           </h1>
           <p className="text-xl text-gray-300">
             실시간 통계와 활동 현황을 확인하세요
@@ -216,7 +216,7 @@ const DashboardPage = () => {
               <UserGroupIcon className="w-6 h-6 text-purple-600" />
             </div>
             <div className="text-3xl font-bold text-gray-900">{stats.totalOperators}</div>
-            <div className="text-sm text-gray-600">등록된 오퍼레이터</div>
+            <div className="text-sm text-gray-600">Registered Operators</div>
           </div>
 
           <div className="glass-card rounded-xl p-6 text-center">
@@ -224,7 +224,7 @@ const DashboardPage = () => {
               <CpuChipIcon className="w-6 h-6 text-blue-600" />
             </div>
             <div className="text-3xl font-bold text-gray-900">{stats.totalTeams}</div>
-            <div className="text-sm text-gray-600">활성화된 팀</div>
+            <div className="text-sm text-gray-600">Active Teams</div>
           </div>
 
           <div className="glass-card rounded-xl p-6 text-center">
@@ -232,7 +232,7 @@ const DashboardPage = () => {
               <CpuChipIcon className="w-6 h-6 text-green-600" />
             </div>
             <div className="text-3xl font-bold text-gray-900">{stats.totalValidators}</div>
-            <div className="text-sm text-gray-600">운영 중인 검증자</div>
+            <div className="text-sm text-gray-600">Running Validators</div>
           </div>
 
           <div className="glass-card rounded-xl p-6 text-center">
@@ -248,7 +248,7 @@ const DashboardPage = () => {
               <ChartBarIcon className="w-6 h-6 text-indigo-600" />
             </div>
             <div className="text-3xl font-bold text-gray-900">{stats.averageReputation}</div>
-            <div className="text-sm text-gray-600">평균 평판 점수</div>
+            <div className="text-sm text-gray-600">Average Reputation Score</div>
           </div>
         </div>
 
@@ -257,7 +257,7 @@ const DashboardPage = () => {
           <div className="glass-card rounded-xl p-6">
             <div className="flex items-center mb-6">
               <TrophyIcon className="w-6 h-6 text-yellow-500 mr-3" />
-              <h2 className="text-2xl font-bold text-gray-900">상위 팀 순위</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Top Team Rankings</h2>
             </div>
             
             <div className="space-y-4">
@@ -292,7 +292,7 @@ const DashboardPage = () => {
           <div className="glass-card rounded-xl p-6">
             <div className="flex items-center mb-6">
               <ClockIcon className="w-6 h-6 text-blue-500 mr-3" />
-              <h2 className="text-2xl font-bold text-gray-900">최근 활동</h2>
+              <h2 className="text-2xl font-bold text-gray-900">Recent Activity</h2>
             </div>
             
             <div className="space-y-4">
@@ -326,7 +326,7 @@ const DashboardPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Link href="/reputation" className="flex items-center justify-center p-4 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors">
               <ChartBarIcon className="w-5 h-5 mr-2" />
-              평판 확인하기
+              Check Reputation
             </Link>
             <Link href="/teams" className="flex items-center justify-center p-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
               <UserGroupIcon className="w-5 h-5 mr-2" />

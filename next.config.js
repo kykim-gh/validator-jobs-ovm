@@ -2,9 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  experimental: {
-    allowedDevOrigins: ['65.21.156.254:3002']
-  },
+  // experimental: {
+  //   allowedDevOrigins: ['65.21.156.254:3002']
+  // },
   env: {
     GITHUB_API_URL: 'https://api.github.com',
     POAP_API_URL: 'https://api.poap.tech',

@@ -26,14 +26,14 @@ const TeamsPage = () => {
       const { address } = await connectWallet();
       setConnectedAccount(address);
       
-      // 연결된 지갑을 첫 번째 멤버로 설정
+      // Set connected wallet as first member
       if (members.length > 0) {
         const updatedMembers = [...members];
         updatedMembers[0].walletAddress = address;
         setMembers(updatedMembers);
       }
     } catch (err: any) {
-      setError(err.message || '지갑 연결에 실패했습니다.');
+      setError(err.message || 'Failed to connect wallet.');
     }
   };
 
@@ -96,7 +96,7 @@ const TeamsPage = () => {
     }
 
     if (!teamName || teamName.length < 3) {
-      setError('팀 이름을 3자 이상 입력해주세요.');
+      setError('Please enter a team name of at least 3 characters.');
       return;
     }
 
@@ -147,7 +147,7 @@ const TeamsPage = () => {
       setMembers([{ walletAddress: connectedAccount, githubUsername: '', reputationScore: 0, role: 'leader' }]);
       
     } catch (err: any) {
-      setError(err.message || '팀 생성에 실패했습니다.');
+      setError(err.message || 'Failed to create team.');
     } finally {
       setLoading(false);
     }
@@ -156,8 +156,8 @@ const TeamsPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
       <Head>
-        <title>팀 관리 - ValidatorJobs with OVM</title>
-        <meta name="description" content="DVT 오퍼레이터 팀을 만들고 관리하세요" />
+        <title>Team Management - ValidatorJobs with OVM</title>
+        <meta name="description" content="Create and manage DVT operator teams" />
       </Head>
 
       {/* Navigation */}
@@ -172,13 +172,13 @@ const TeamsPage = () => {
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
-                홈
+                Home
               </Link>
               <Link href="/reputation" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
-                평판 확인
+                Check Reputation
               </Link>
               <Link href="/dashboard" className="text-white hover:text-purple-300 px-3 py-2 rounded-md text-sm font-medium">
-                대시보드
+                Dashboard
               </Link>
               {connectedAccount ? (
                 <div className="bg-purple-600 text-white px-4 py-2 rounded-lg text-sm">
@@ -189,7 +189,7 @@ const TeamsPage = () => {
                   onClick={connectWalletHandler}
                   className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
                 >
-                  지갑 연결
+                  Connect Wallet
                 </button>
               )}
             </div>
@@ -201,7 +201,7 @@ const TeamsPage = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-extrabold text-white mb-4">
-            DVT 팀 생성
+            Create DVT Team
           </h1>
           <p className="text-xl text-gray-300">
             신뢰할 수 있는 오퍼레이터들과 함께 검증자 팀을 만들어보세요
@@ -215,7 +215,7 @@ const TeamsPage = () => {
           {/* Team Name */}
           <div className="mb-6">
             <label htmlFor="teamName" className="block text-sm font-medium text-gray-700 mb-2">
-              팀 이름
+              Team Name
             </label>
             <input
               type="text"
@@ -237,7 +237,7 @@ const TeamsPage = () => {
                 className="flex items-center px-3 py-2 bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 text-white rounded-lg text-sm transition-colors"
               >
                 <PlusIcon className="w-4 h-4 mr-1" />
-                멤버 추가
+                Add Member
               </button>
             </div>
 
@@ -269,7 +269,7 @@ const TeamsPage = () => {
                         onChange={(e) => updateMember(index, 'walletAddress', e.target.value)}
                         placeholder="0x..."
                         className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
-                        disabled={index === 0 && connectedAccount}
+                        disabled={index === 0 && !!connectedAccount}
                       />
                     </div>
 
@@ -288,7 +288,7 @@ const TeamsPage = () => {
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        역할
+                        Role
                       </label>
                       <select
                         value={member.role}
@@ -296,16 +296,16 @@ const TeamsPage = () => {
                         disabled={index === 0}
                         className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
                       >
-                        <option value="leader">리더</option>
-                        <option value="technical">기술 담당</option>
-                        <option value="financial">재정 담당</option>
-                        <option value="member">일반 멤버</option>
+                        <option value="leader">Leader</option>
+                        <option value="technical">Technical</option>
+                        <option value="financial">Financial</option>
+                        <option value="member">Member</option>
                       </select>
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
-                        평판 점수
+                        Reputation Score
                       </label>
                       <div className="flex">
                         <input
@@ -370,13 +370,13 @@ const TeamsPage = () => {
             disabled={loading || !connectedAccount}
             className="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-gray-400 text-white font-medium py-3 px-6 rounded-lg transition-colors"
           >
-            {loading ? '팀 생성 중...' : '팀 생성하기'}
+            {loading ? 'Creating Team...' : 'Create Team'}
           </button>
         </div>
 
         {/* Requirements */}
         <div className="glass-card rounded-xl p-6">
-          <h3 className="text-xl font-semibold text-gray-900 mb-4">팀 생성 요구사항</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">Team Creation Requirements</h3>
           <div className="space-y-2 text-sm text-gray-600">
             <div className="flex items-center">
               <ChartBarIcon className="w-4 h-4 mr-2" />
