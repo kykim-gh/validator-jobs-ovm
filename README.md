@@ -126,25 +126,19 @@ POST /api/team/match
 - **C Grade (350-499 points)**: Junior Operator
 - **D Grade (0-349 points)**: Novice Operator
 
-## 🚨 Team Creation Requirements
+### Team Creation Requirements
 
 - Team average reputation of 600+ points
 - Minimum 3 members, maximum 6 members
 - Leader must have 700+ reputation points
 - Each member must have minimum 500+ reputation points
 
-## 🔗 Links and Resources
+### Links and Resources
 
 - **Live Demo**: http://65.21.156.254:3000
 - **GitHub Repository**: https://github.com/kykim-gh/validator-jobs-ovm
 - **OVM Factory**: [0x6F13d929C783a420AE4DC71C1dcc27A02038Ed09](https://hoodiscan.com/address/0x6F13d929C783a420AE4DC71C1dcc27A02038Ed09)
 - **Demo Scenario**: `demo/DEMO_SCENARIO.md`
-
-## 📞 Support and Contact
-
-- GitHub Issues
-- Obol Discord: [discord.gg/obol](https://discord.gg/obol)
-- Documentation: [docs.obol.tech](https://docs.obol.tech)
 
 ## 📄 License
 
